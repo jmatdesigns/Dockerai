@@ -1,0 +1,29 @@
+services:
+  wordpress:
+    image: wordpress:latest
+    container_name: wordpress
+    ports:
+      - "8080:80"
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: jeremiah 
+      WORDPRESS_DB_PASSWORD: fajxoQ-wixba8-degtiv
+      WORDPRESS_DB_NAME: wordpress
+    volumes:
+      - ./wordpress:/var/www/html
+    restart: always
+
+  db:
+    image: mariadb:latest
+    container_name: db
+    environment:
+      MYSQL_ROOT_PASSWORD: fajxoQ-wixba8-degtiv
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: jeremiah
+      MYSQL_PASSWORD: fajxoQ-wixba8-degtiv
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: always
+
+volumes:
+  db_data:
